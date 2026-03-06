@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment | RVA Style</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<header>
+    <h1>Book Your Consultation</h1>
+    <p>Schedule time with our specialists — simple and easy</p>
+</header>
+
+<div class="booking-container">
+    <div class="section-title">Appointment Details</div>
+    <div class="description">
+        Fill out your information and preferred time below. We’ll confirm your appointment soon!
+    </div>
+
+    <form id="bookingForm">
+
+        <div class="grid">
+            <div>
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" required>
+            </div>
+
+            <div>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div>
+                <label for="service">Service Type</label>
+                <select id="service" required>
+                    <option value="">Select Service</option>
+                    <option>Cabinet Design Consultation</option>
+                    <option>Showroom Visit</option>
+                    <option>Custom Quote Review</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" required>
+            </div>
+
+            <div>
+                <label for="time">Preferred Time</label>
+                <div id="timeSlots" class="time-slots"></div>
+                <input type="hidden" id="selectedTime">
+            </div>
+
+            <div class="full-width">
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" rows="3"></textarea>
+            </div>
+
+            <div class="full-width">
+                <label for="budget">Budget Range</label>
+                <select id="budget">
+                    <option value="">Select Budget</option>
+                    <option>Under $10,000</option>
+                    <option>$10,000 – $25,000</option>
+                    <option>$25,000+</option>
+                </select>
+            </div>
+
+            <div class="full-width">
+                <button type="submit">Schedule Appointment</button>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="success" id="successMsg">Your appointment request has been sent!</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

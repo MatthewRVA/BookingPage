@@ -1,1 +1,137 @@
+/* Base Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+}
 
+/* Header / Hero Section */
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1rem;
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
+/* Booking Container */
+.booking-container {
+    max-width: 900px;
+    margin: -30px auto 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.section-title {
+    text-align: center;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Form Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 4px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Time Slots */
+.time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.time-slots button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #eee;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.time-slots button.selected {
+    background: #222;
+    color: #fff;
+}
+
+/* Full width buttons + messages */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background: #222;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #444;
+}
+
+.success {
+    text-align: center;
+    padding: 14px;
+    background: #d4edda;
+    color: #155724;
+    border-radius: 6px;
+    margin-top: 12px;
+    display: none;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
