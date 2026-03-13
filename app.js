@@ -62,8 +62,7 @@ bookingForm.addEventListener("submit", async function(e) {
         service_id: serviceMap[document.getElementById("service").value] || "",
         appointment_time: dateInput.value + "T" + selectedTimeInput.value,
         custom_fields: [
-            { label: "Additional Notes", value: document.getElementById("notes").value },
-            { label: "Budget Range", value: document.getElementById("budget").value }
+            { label: "Additional Notes", value: document.getElementById("notes").value }
         ]
     };
 
