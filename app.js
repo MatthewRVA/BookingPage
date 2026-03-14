@@ -1,11 +1,18 @@
 // Replace with your deployed Vercel backend URL
-const API_BASE = "https://booking-api.vercel.app";
+const API_BASE = "booking-page-teal.vercel.app"; // <-- put your actual Vercel URL here
 
 const dateInput = document.getElementById("date");
 const timeSlotsDiv = document.getElementById("timeSlots");
 const selectedTimeInput = document.getElementById("selectedTime");
 const bookingForm = document.getElementById("bookingForm");
 const successMsg = document.getElementById("successMsg");
+
+// Map service names to your Zoho service IDs
+const serviceMap = {
+    "Cabinet Design Consultation": "4746908000000317054",
+    "Showroom Visit": "SERVICE_ID_2",
+    "Custom Quote Review": "SERVICE_ID_3"
+};
 
 // Fetch available time slots when date changes
 dateInput.addEventListener("change", async () => {
@@ -25,6 +32,7 @@ dateInput.addEventListener("change", async () => {
                 const btn = document.createElement("button");
                 btn.type = "button";
                 btn.textContent = slot;
+                btn.className = "time-btn";
                 btn.onclick = () => {
                     selectedTimeInput.value = slot;
                     // Highlight selected
@@ -46,12 +54,13 @@ dateInput.addEventListener("change", async () => {
 bookingForm.addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    // Map service names to your Zoho service IDs
-    const serviceMap = {
-        "Cabinet Design Consultation": "SERVICE_ID_1",
-        "Showroom Visit": "SERVICE_ID_2",
-        "Custom Quote Review": "SERVICE_ID_3"
-    };
+    const serviceValue = document.getElementById("service").value;
+    const service_id = serviceMap[serviceValue] || "";
+
+    if (!service_id) {
+        alert("Please select a valid service.");
+        return;
+    }
 
     const bookingData = {
         customer_details: {
@@ -59,8 +68,8 @@ bookingForm.addEventListener("submit", async function(e) {
             email: document.getElementById("email").value,
             phone: document.getElementById("phone").value
         },
-        service_id: serviceMap[document.getElementById("service").value] || "",
-        appointment_time: dateInput.value + "T" + selectedTimeInput.value,
+        service_id: service_id,
+        appointment_time: `${dateInput.value}T${selectedTimeInput.value}`,
         custom_fields: [
             { label: "Additional Notes", value: document.getElementById("notes").value }
         ]

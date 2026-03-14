@@ -1,12 +1,10 @@
 {
   "name": "rva-booking-app",
   "version": "1.0.0",
-  "description": "RVA-style booking app",
+  "description": "RVA Style Booking App using Zoho Bookings API",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "dependencies": {
-    "axios": "^1.7.0"
-  }
+  "dependencies": {}
 }
