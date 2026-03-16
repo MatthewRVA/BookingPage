@@ -5,6 +5,13 @@ export default async function handler(req, res) {
   try {
     const bookingData = req.body;
 
+    // Zoho Bookings expects an ISO timestamp (or start_time) for the appointment.
+    // Keep the original payload but ensure we send a start_time field too.
+    const payload = {
+      ...bookingData,
+      start_time: bookingData.appointment_time || bookingData.start_time
+    };
+
     const response = await fetch(
       "https://www.zohoapis.com/bookings/v1/json/appointments",
       {
@@ -14,7 +21,7 @@ export default async function handler(req, res) {
           orgId: process.env.ZOHO_ORG_ID,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(bookingData)
+        body: JSON.stringify(payload)
       }
     );
 

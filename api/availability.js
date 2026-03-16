@@ -2,12 +2,15 @@
 export default async function handler(req, res) {
   if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
 
-  const { date } = req.query;
+  const { date, service_id } = req.query;
   if (!date) return res.status(400).json({ error: "Date parameter required" });
+
+  const serviceId = service_id || process.env.SERVICE_ID;
+  if (!serviceId) return res.status(400).json({ error: "Service ID required" });
 
   try {
     const response = await fetch(
-      `https://www.zohoapis.com/bookings/v1/json/availability?service_id=${process.env.SERVICE_ID}&date=${date}`,
+      `https://www.zohoapis.com/bookings/v1/json/availability?service_id=${serviceId}&date=${date}`,
       {
         method: "GET",
         headers: {
